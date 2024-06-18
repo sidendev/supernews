@@ -1,8 +1,8 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import Header from './Header';
-import ArticleSelected from './ArticleSelected';
+import Home from './components/Home';
+import Header from './components/Header';
+import ArticleSelected from './components/ArticleSelected';
 
 function App() {
   return (
