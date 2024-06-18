@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getArticles } from "./utils/api";
+import { getArticles } from "../utils/api";
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -39,8 +39,7 @@ const Home = () => {
             </section>
           </li>
         </Link>
-      ))
-      }
+      ))}
     </ul >
   );
 };
