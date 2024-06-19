@@ -21,3 +21,35 @@ export const getAllComments = (article_id) => {
     return res;
   });
 };
+
+export const addArticleVote = (article_id) => {
+  axios({
+    method: 'patch',
+    url: `https://supernews-4j74.onrender.com/api/articles/${article_id}`,
+    data: {
+      inc_votes: 1,
+    },
+  })
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
+export const removeArticleVote = (article_id) => {
+  axios({
+    method: 'patch',
+    url: `https://supernews-4j74.onrender.com/api/articles/${article_id}`,
+    data: {
+      inc_votes: -1,
+    },
+  })
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
