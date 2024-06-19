@@ -48,12 +48,12 @@ const ArticleVotes = () => {
         </div>
       </div>}
       {!isLoading && <div>
-        <div className="stats shadow light">
+        <section className="stats shadow light">
           <div className="stat">
             <div className="stat-title text-red-600">Article Votes:</div>
             <div className="stat-value text-red-600">{currentArticleVotes}</div>
           </div>
-        </div>
+        </section>
       </div>}
       <button className="btn" onClick={handleAddArticleVoteClick}><FaThumbsUp /></button>
       <button className="btn" onClick={handleRemoveArticleVoteClick}><FaThumbsDown /></button>

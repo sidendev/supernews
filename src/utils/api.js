@@ -53,3 +53,25 @@ export const removeArticleVote = (article_id) => {
       return error;
     });
 };
+
+export const postNewComment = (article_id, commentAuthor, commentBody) => {
+  axios
+    .post(
+      `https://supernews-4j74.onrender.com/api/articles/${article_id}/comments`,
+      {
+        author: commentAuthor,
+        body: commentBody,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
