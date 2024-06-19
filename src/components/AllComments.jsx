@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAllComments } from "../utils/api";
 
-const AllComments = () => {
+const AllComments = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
@@ -16,11 +16,12 @@ const AllComments = () => {
       .then((dataReturned) => {
         setComments(dataReturned);
         setIsLoading(false);
+        props.setCommentsUpdated(false)
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [props.commentsUpdated]);
 
   if (isLoading) {
     return (
@@ -33,9 +34,9 @@ const AllComments = () => {
   }
 
   return (
-    <ul className="container flex flex-col max-w-2xl px-6 py-24 mx-auto space-y-12 divide-gray-300 bg-gray-100 text-gray-900">
+    <ul className="container flex flex-col max-w-2xl px-6 py-12 mx-auto space-y-12 divide-gray-300 bg-gray-100 text-gray-900">
       {comments.map((comment) => (
-        <li key={comment.comment_id} className="flex justify-between p-4">
+        <li key={comment.comment_id} className="flex justify-start p-4">
           <section className="flex space-x-4">
             <aside>
               <span className="font-bold">{comment.author}</span><br />
@@ -43,7 +44,7 @@ const AllComments = () => {
               <span className="text-xs font-bold text-red-600">Votes: {comment.votes}</span>
             </aside>
           </section>
-          <section className="p-4 space-y-2 text-sm text-gray-600">
+          <section className="p-4 space-y-2 text-sm text-gray-600 text-left">
             <p>{comment.body}</p>
           </section>
         </li>

@@ -3,11 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
 import AllComments from "./AllComments";
 import ArticleVotes from "./ArticleVotes";
+import WriteComment from "./WriteComment";
 
 const ArticleSelected = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [article, setArticle] = useState([]);
   const { article_id } = useParams();
+  const [commentsUpdated, setCommentsUpdated] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -57,7 +59,10 @@ const ArticleSelected = () => {
         </aside>
       </article>
       <section>
-        <AllComments />
+        <WriteComment setCommentsUpdated={setCommentsUpdated} />
+      </section>
+      <section>
+        <AllComments commentsUpdated={commentsUpdated} setCommentsUpdated={setCommentsUpdated} />
       </section>
     </>
   );
