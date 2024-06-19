@@ -5,13 +5,13 @@ const Header = () => {
     <header className="bg-red-600">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="md:flex md:items-center md:gap-12">
+          <section className="md:flex md:items-center md:gap-12">
             <Link to={'/'} className="block text-white">
               <span className="font-bold">SUPERNEWS</span>
             </Link>
-          </div>
+          </section>
 
-          <div className="hidden md:block">
+          <section className="hidden md:block">
             <nav>
               <ul className="flex items-center gap-6 text-sm">
                 <li>
@@ -25,13 +25,12 @@ const Header = () => {
                 </li>
               </ul>
             </nav>
-          </div>
+          </section>
 
-          <div className="flex items-center gap-4">
+          <section className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
               <Link
-                className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-red-600 shadow transition hover:underline"
-              >
+                className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-red-600 shadow transition hover:underline">
                 Login
               </Link>
             </div>
@@ -51,7 +50,7 @@ const Header = () => {
               </button>
             </div>
 
-          </div>
+          </section>
         </div>
       </div>
     </header>
