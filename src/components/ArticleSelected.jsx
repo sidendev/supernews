@@ -10,6 +10,10 @@ const ArticleSelected = () => {
   const [article, setArticle] = useState([]);
   const { article_id } = useParams();
   const [commentsUpdated, setCommentsUpdated] = useState(false);
+  const [deleteMessage, setDeleteMessage] = useState(false);
+  // commentAuthor hardcoded during project build
+  // eslint-disable-next-line no-unused-vars
+  const [commentAuthor, setCommentAuthor] = useState('grumpy19');
 
   useEffect(() => {
     setIsLoading(true);
@@ -42,7 +46,9 @@ const ArticleSelected = () => {
         <section className="w-full mx-auto space-y-4 text-center">
           <span className="text-xs font-semibold tracking-wider uppercase">{article.topic}</span>
           <h1 className="text-4xl font-bold leading-tight md:text-5xl">{article.title}</h1>
-          <img src={article.article_img_url} alt={`article image related to ${article.topic}`} />
+          <img
+            src={article.article_img_url}
+            alt={`article image related to ${article.topic}`} />
           <p className="text-sm text-gray-600">by{" "}
             <Link className="underline text-red-600">
               <span itemProp="name">{article.author}</span>
@@ -59,10 +65,20 @@ const ArticleSelected = () => {
         </aside>
       </article>
       <section>
-        <WriteComment setCommentsUpdated={setCommentsUpdated} />
+        <WriteComment
+          setCommentsUpdated={setCommentsUpdated}
+          setDeleteMessage={setDeleteMessage}
+          commentAuthor={commentAuthor}
+        />
       </section>
       <section>
-        <AllComments commentsUpdated={commentsUpdated} setCommentsUpdated={setCommentsUpdated} />
+        <AllComments
+          commentsUpdated={commentsUpdated}
+          setCommentsUpdated={setCommentsUpdated}
+          deleteMessage={deleteMessage}
+          setDeleteMessage={setDeleteMessage}
+          commentAuthor={commentAuthor}
+        />
       </section>
     </>
   );
