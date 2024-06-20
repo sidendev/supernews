@@ -75,3 +75,14 @@ export const postNewComment = (article_id, commentAuthor, commentBody) => {
       return error;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  axios
+    .delete(`https://supernews-4j74.onrender.com/api/comments/${comment_id}`)
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      return error;
+    });
+};

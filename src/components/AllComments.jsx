@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getAllComments } from "../utils/api";
+import { getAllComments, deleteComment } from "../utils/api";
 
 const AllComments = (props) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,15 +33,45 @@ const AllComments = (props) => {
     )
   }
 
+  const renderDeleteButton = (comment) => {
+    if (comment.author === props.commentAuthor) {
+      return (
+        <button
+          type="submit"
+          id={comment.comment_id}
+          onClick={handleSubmitDeleteComment}
+          className="btn btn-sm bg-red-600 text-white hover:bg-red-700 mt-2"
+        >
+          Delete
+        </button>
+      );
+    }
+    return null;
+  };
+
+  const handleSubmitDeleteComment = (event) => {
+    const comment_id = event.target.id
+    event.preventDefault()
+    deleteComment(comment_id)
+    props.setDeleteMessage((prevState) => !prevState)
+    props.setCommentsUpdated((prevState) => !prevState);
+  }
+
   return (
     <ul className="container flex flex-col max-w-2xl px-6 py-12 mx-auto space-y-12 divide-gray-300 bg-gray-100 text-gray-900">
+      {props.deleteMessage && (
+        <div className="text-red-600 font-bold">
+          <span>Comment has been deleted, thank you</span>
+        </div>
+      )}
       {comments.map((comment) => (
-        <li key={comment.comment_id} className="flex justify-start p-4">
+        <li key={comment.comment_id} className="flex justify-start p-2 border-t border-gray-300 mt-2">
           <section className="flex space-x-4">
             <aside>
               <span className="font-bold">{comment.author}</span><br />
               <span className="text-xs text-gray-600">{new Date(comment.created_at).toDateString()}</span><br />
-              <span className="text-xs font-bold text-red-600">Votes: {comment.votes}</span>
+              <span className="text-xs font-bold text-red-600">Votes: {comment.votes}</span><br />
+              {renderDeleteButton(comment)}
             </aside>
           </section>
           <section className="p-4 space-y-2 text-sm text-gray-600 text-left">
