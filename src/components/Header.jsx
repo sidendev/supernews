@@ -15,13 +15,13 @@ const Header = () => {
             <nav>
               <ul className="flex items-center gap-6 text-sm">
                 <li>
-                  <Link className="text-white transition hover:underline" href="#"> Coding </Link>
+                  <Link to={'/articles/coding'} className="text-white transition hover:underline"> Coding </Link>
                 </li>
                 <li>
-                  <Link className="text-white transition hover:underline" href="#"> Football </Link>
+                  <Link to={'/articles/football'} className="text-white transition hover:underline"> Football </Link>
                 </li>
                 <li>
-                  <Link className="text-white transition hover:underline" href="#"> Cooking </Link>
+                  <Link to={'/articles/cooking'} className="text-white transition hover:underline"> Cooking </Link>
                 </li>
               </ul>
             </nav>

@@ -86,3 +86,18 @@ export const deleteComment = (comment_id) => {
       return error;
     });
 };
+
+export const getArticlesByTopic = (topic) => {
+  return axios
+    .get('https://supernews-4j74.onrender.com/api/articles/', {
+      params: {
+        topic: topic,
+      },
+    })
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
