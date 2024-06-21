@@ -5,9 +5,14 @@ export const newsApi = axios.create({
 });
 
 export const getArticleById = (article_id) => {
-  return newsApi.get(`/articles/${article_id}`).then((res) => {
-    return res;
-  });
+  return newsApi
+    .get(`/articles/${article_id}`)
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 export const getArticles = (sortByInput, orderByInput) => {
@@ -20,17 +25,25 @@ export const getArticles = (sortByInput, orderByInput) => {
     })
     .then((res) => {
       return res;
+    })
+    .catch((error) => {
+      throw error;
     });
 };
 
 export const getAllComments = (article_id) => {
-  return newsApi.get(`/articles/${article_id}/comments`).then((res) => {
-    return res;
-  });
+  return newsApi
+    .get(`/articles/${article_id}/comments`)
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 export const addArticleVote = (article_id) => {
-  axios({
+  return axios({
     method: 'patch',
     url: `https://supernews-4j74.onrender.com/api/articles/${article_id}`,
     data: {
@@ -41,12 +54,12 @@ export const addArticleVote = (article_id) => {
       return res;
     })
     .catch((error) => {
-      return error;
+      throw error;
     });
 };
 
 export const removeArticleVote = (article_id) => {
-  axios({
+  return axios({
     method: 'patch',
     url: `https://supernews-4j74.onrender.com/api/articles/${article_id}`,
     data: {
@@ -57,12 +70,12 @@ export const removeArticleVote = (article_id) => {
       return res;
     })
     .catch((error) => {
-      return error;
+      throw error;
     });
 };
 
 export const postNewComment = (article_id, commentAuthor, commentBody) => {
-  axios
+  return axios
     .post(
       `https://supernews-4j74.onrender.com/api/articles/${article_id}/comments`,
       {
@@ -79,18 +92,18 @@ export const postNewComment = (article_id, commentAuthor, commentBody) => {
       return res;
     })
     .catch((error) => {
-      return error;
+      throw error;
     });
 };
 
 export const deleteComment = (comment_id) => {
-  axios
+  return axios
     .delete(`https://supernews-4j74.onrender.com/api/comments/${comment_id}`)
     .then((res) => {
       return res;
     })
     .catch((error) => {
-      return error;
+      throw error;
     });
 };
 
@@ -105,6 +118,6 @@ export const getArticlesByTopic = (topic) => {
       return res;
     })
     .catch((error) => {
-      return error;
+      throw error;
     });
 };

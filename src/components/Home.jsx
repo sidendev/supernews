@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import ArticlesNavBar from "./ArticlesNavbar";
 import { LiaCommentsSolid } from "react-icons/lia";
@@ -8,6 +8,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const sortBy = searchParams.get("sort_by") || "created_at";
   const order = searchParams.get("order") || "desc";
@@ -24,8 +25,9 @@ const Home = () => {
       })
       .catch((error) => {
         console.log(error);
+        navigate(`/error/${error.response?.status || 'general'}`);
       });
-  }, [sortBy, order]);
+  }, [sortBy, order, navigate]);
 
   if (isLoading) {
     return (

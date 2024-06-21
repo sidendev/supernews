@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { getArticlesByTopic } from "../utils/api";
 import { LiaCommentsSolid } from "react-icons/lia";
 
@@ -7,6 +7,7 @@ const TopicSelected = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [articlesByTopic, setArticlesByTopic] = useState([]);
   const { topic } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -20,8 +21,9 @@ const TopicSelected = () => {
       })
       .catch((error) => {
         console.log(error);
+        navigate(`/error/${error.response?.status || 'general'}`);
       });
-  }, [topic]);
+  }, [topic, navigate]);
 
   if (isLoading) {
     return (

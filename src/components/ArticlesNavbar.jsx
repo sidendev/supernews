@@ -41,8 +41,8 @@ const ArticlesNavBar = ({ searchParams, setSearchParams }) => {
                 Order
               </summary>
               <ul className="p-2 bg-white rounded-t-none">
-                <li><button className="hover:bg-slate-300" onClick={() => handleOrderChange("asc")}>Ascend</button></li>
-                <li><button className="hover:bg-slate-300" onClick={() => handleOrderChange("desc")}>Descend</button></li>
+                <li><button className="hover:bg-slate-300" onClick={() => handleOrderChange("asc")}>Ascending</button></li>
+                <li><button className="hover:bg-slate-300" onClick={() => handleOrderChange("desc")}>Descending</button></li>
               </ul>
             </details>
           </li>
