@@ -10,10 +10,17 @@ export const getArticleById = (article_id) => {
   });
 };
 
-export const getArticles = () => {
-  return newsApi.get('/articles/').then((res) => {
-    return res;
-  });
+export const getArticles = (sortByInput, orderByInput) => {
+  return newsApi
+    .get('/articles/', {
+      params: {
+        sort_by: sortByInput,
+        order: orderByInput,
+      },
+    })
+    .then((res) => {
+      return res;
+    });
 };
 
 export const getAllComments = (article_id) => {
