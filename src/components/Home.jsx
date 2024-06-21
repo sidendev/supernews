@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getArticles } from "../utils/api";
+import ArticlesNavBar from "./ArticlesNavbar";
+import { LiaCommentsSolid } from "react-icons/lia";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortBy = searchParams.get("sort_by") || "created_at";
+  const order = searchParams.get("order") || "desc";
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles()
+    getArticles(sortBy, order)
       .then(({ data }) => {
         return data.articles;
       })
@@ -19,7 +25,7 @@ const Home = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [sortBy, order]);
 
   if (isLoading) {
     return (
@@ -32,27 +38,35 @@ const Home = () => {
   }
 
   return (
-    <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 my-4 mx-2">
-      {articles.map((article) => (
-        <Link key={article.article_id} to={`/article/${article.article_id}`} >
-          <li
-            className="bg-gray-700 text-gray-100 h-96 
+    <>
+      <ArticlesNavBar searchParams={searchParams} setSearchParams={setSearchParams} />
+      <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 my-4 mx-2">
+        {articles.map((article) => (
+          <Link key={article.article_id} to={`/article/${article.article_id}`} >
+            <li
+              className="bg-gray-700 text-gray-100 h-96 
             rounded-lg group hover:no-underline focus:no-underline">
-            <img
-              src={article.article_img_url}
-              role="presentation"
-              className="object-cover w-full rounded h-44"
-            />
-            <section className="p-6 space-y-2">
-              <h3 className="text-1xl font-semibold 
-                group-hover:underline group-focus:underline group-hover:text-red-600">{article.title}</h3>
-              <h4 className="text-gray-400"> {article.topic} </h4>
-              <span className="text-gray-400"> Votes: {article.votes} </span>
-            </section>
-          </li>
-        </Link>
-      ))}
-    </ul >
+              <img
+                src={article.article_img_url}
+                role="presentation"
+                className="object-cover w-full rounded h-44"
+              />
+              <section className="p-6 space-y-1">
+                <h3 className="text-1xl font-semibold group-hover:underline group-focus:underline group-hover:text-red-500">
+                  {article.title}
+                </h3>
+                <h4 className="text-red-500"> {article.topic} </h4>
+                <span className="text-gray-400"> Votes: {article.votes} </span><br />
+                <span className="text-gray-400">{new Date(article.created_at).toDateString()}</span>
+                <span className="flex items-center space-x-2 text-red-500"><LiaCommentsSolid />
+                  <span>{article.comment_count}</span>
+                </span>
+              </section>
+            </li>
+          </Link>
+        ))}
+      </ul >
+    </>
   );
 };
 
