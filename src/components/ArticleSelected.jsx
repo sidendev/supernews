@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { getArticleById } from "../utils/api";
 import AllComments from "./AllComments";
 import ArticleVotes from "./ArticleVotes";
@@ -11,6 +11,7 @@ const ArticleSelected = () => {
   const { article_id } = useParams();
   const [commentsUpdated, setCommentsUpdated] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
+  const navigate = useNavigate();
   // commentAuthor hardcoded during project build
   // eslint-disable-next-line no-unused-vars
   const [commentAuthor, setCommentAuthor] = useState('grumpy19');
@@ -27,8 +28,9 @@ const ArticleSelected = () => {
       })
       .catch((error) => {
         console.log(error);
+        navigate(`/error/${error.response?.status || 'general'}`);
       });
-  }, []);
+  }, [navigate]);
 
   if (isLoading) {
     return (

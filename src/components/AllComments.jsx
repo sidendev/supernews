@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getAllComments, deleteComment } from "../utils/api";
 
 const AllComments = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -20,8 +21,9 @@ const AllComments = (props) => {
       })
       .catch((error) => {
         console.log(error);
+        navigate(`/error/${error.response?.status || 'general'}`);
       });
-  }, [props.commentsUpdated]);
+  }, [props.commentsUpdated, navigate]);
 
   if (isLoading) {
     return (
