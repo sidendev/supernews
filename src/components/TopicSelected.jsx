@@ -28,9 +28,9 @@ const TopicSelected = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center space-x-2 mt-10">
-        <div className="w-4 h-4 rounded-full animate-pulse bg-red-600"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-red-600"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-red-600"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
       </div>
     )
   }
@@ -38,7 +38,7 @@ const TopicSelected = () => {
   return (
     <>
       <div className="flex items-center justify-center my-6">
-        <h2 className="font-bold text-red-600">{topic.toUpperCase()}</h2>
+        <h2 className="font-bold text-purple-900">{topic.toUpperCase()}</h2>
       </div>
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 my-4 mx-2">
         {articlesByTopic.map((article) => (
@@ -52,13 +52,13 @@ const TopicSelected = () => {
                 className="object-cover w-full rounded h-44"
               />
               <section className="p-6 space-y-1">
-                <h3 className="text-1xl font-semibold group-hover:underline group-focus:underline group-hover:text-red-500">
+                <h3 className="text-1xl font-semibold group-hover:underline group-focus:underline group-hover:text-purple-800">
                   {article.title}
                 </h3>
-                <h4 className="text-red-500"> {article.topic} </h4>
+                <h4 className="text-purple-800"> {article.topic} </h4>
                 <span className="text-gray-400"> Votes: {article.votes} </span><br />
                 <span className="text-gray-400">{new Date(article.created_at).toDateString()}</span>
-                <span className="flex items-center space-x-2 text-red-500"><LiaCommentsSolid />
+                <span className="flex items-center space-x-2 text-purple-800"><LiaCommentsSolid />
                   <span>{article.comment_count}</span>
                 </span>
               </section>

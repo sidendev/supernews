@@ -30,7 +30,7 @@ const ErrorScreen = () => {
         </p>
         <br />
         <Link to={'/'}>
-          <button className="btn btn-sm bg-red-600 text-white hover:bg-red-700">
+          <button className="btn btn-sm bg-purple-900 text-white hover:bg-purple-800">
             Go back to home
           </button>
         </Link>

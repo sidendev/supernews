@@ -4,7 +4,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-red-600">
+      <header className="bg-purple-900">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <section className="md:flex md:items-center md:gap-12">
@@ -31,14 +31,11 @@ const Header = () => {
 
             <section className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <Link
-                  className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-red-600 shadow transition hover:underline">
-                  Login
-                </Link>
+                <button className="btn rounded-full bg-purple-900 text-white hover:bg-purple-800">Login</button>
               </div>
 
               <div className="block md:hidden">
-                <button className="rounded bg-gray-100 p-2 text-red-600 transition hover:text-gray-600/75">
+                <button className="rounded bg-gray-100 p-2 text-purple-900 transition hover:text-purple-800">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"

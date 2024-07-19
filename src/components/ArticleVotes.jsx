@@ -42,22 +42,22 @@ const ArticleVotes = () => {
     <>
       {isLoading && <div>
         <div className="flex items-center justify-center space-x-2 mt-10">
-          <div className="w-2 h-2 rounded-full animate-pulse bg-red-600"></div>
-          <div className="w-2 h-2 rounded-full animate-pulse bg-red-600"></div>
-          <div className="w-2 h-2 rounded-full animate-pulse bg-red-600"></div>
+          <div className="w-2 h-2 rounded-full animate-pulse bg-purple-900"></div>
+          <div className="w-2 h-2 rounded-full animate-pulse bg-purple-900"></div>
+          <div className="w-2 h-2 rounded-full animate-pulse bg-purple-900"></div>
         </div>
       </div>}
       {!isLoading && <div>
         <section className="stats shadow light">
           <div className="stat">
-            <div className="stat-title text-red-600">Article Votes:</div>
-            <div className="stat-value text-red-600">{currentArticleVotes}</div>
+            <div className="stat-title text-purple-900">Article Votes:</div>
+            <div className="stat-value text-purple-900">{currentArticleVotes}</div>
           </div>
         </section>
       </div>}
       <button className="btn" onClick={handleAddArticleVoteClick}><FaThumbsUp /></button>
       <button className="btn" onClick={handleRemoveArticleVoteClick}><FaThumbsDown /></button>
-      {errorMessage && <div className="error-message text-red-600 font-bold">{errorMessage}</div>}
+      {errorMessage && <div className="error-message text-purple-900 font-bold">{errorMessage}</div>}
     </>
   );
 };

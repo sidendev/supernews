@@ -35,9 +35,9 @@ const ArticleSelected = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center space-x-2 mt-10">
-        <div className="w-4 h-4 rounded-full animate-pulse bg-red-600"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-red-600"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-red-600"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
       </div>
     )
   }
@@ -52,7 +52,7 @@ const ArticleSelected = () => {
             src={article.article_img_url}
             alt={`article image related to ${article.topic}`} />
           <p className="text-sm text-gray-600">by{" "}
-            <Link className="underline text-red-600">
+            <Link className="underline text-purple-900">
               <span itemProp="name">{article.author}</span>
             </Link> on{" "}
             <span>{new Date(article.created_at).toDateString()}</span>

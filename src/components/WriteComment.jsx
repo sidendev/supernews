@@ -57,16 +57,16 @@ const WriteComment = (props) => {
         <button
           type="submit"
           onClick={handleSubmitComment}
-          className="btn btn-sm bg-red-600 text-white hover:bg-red-700">
+          className="btn btn-sm bg-purple-900 text-white hover:bg-purple-800">
           Post Comment
         </button>
         {thanksMessage &&
-          <div className="text-red-600 font-bold">
+          <div className="text-purple-900 font-bold">
             <span>Thanks for your comment!</span>
           </div>
         }
         {errorMessage &&
-          <div className="text-red-600 font-bold">
+          <div className="text-purple-900 font-bold">
             <span>{errorMessage}</span>
           </div>
         }
