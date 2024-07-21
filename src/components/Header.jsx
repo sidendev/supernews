@@ -26,7 +26,7 @@ const Header = () => {
           <div className="flex h-16 items-center justify-between">
             <section className="md:flex md:items-center md:gap-12">
               <Link to={'/'} className="block text-white">
-                <span className="font-bold">SUPERNEWS</span>
+                <span className="font-extrabold text-2xl">SuperNews</span>
               </Link>
             </section>
 
@@ -34,13 +34,13 @@ const Header = () => {
               <nav>
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
-                    <Link to={'/articles/coding'} className="text-white transition hover:underline"> Coding </Link>
+                    <Link to={'/articles/coding'} className="font-semibold text-white transition hover:underline"> Coding </Link>
                   </li>
                   <li>
-                    <Link to={'/articles/football'} className="text-white transition hover:underline"> Football </Link>
+                    <Link to={'/articles/football'} className="font-semibold text-white transition hover:underline"> Football </Link>
                   </li>
                   <li>
-                    <Link to={'/articles/cooking'} className="text-white transition hover:underline"> Cooking </Link>
+                    <Link to={'/articles/cooking'} className="font-semibold text-white transition hover:underline"> Cooking </Link>
                   </li>
                 </ul>
               </nav>
@@ -48,7 +48,7 @@ const Header = () => {
 
             <section className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <button className="btn btn-secondary rounded-full bg-purple-900 text-white ">Login</button>
+                <button className="btn btn-secondary rounded-full bg-purple-900 text-white font-semibold">Login</button>
               </div>
 
               <label className="swap swap-rotate">

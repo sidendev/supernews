@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .prose {
+    @apply font-sans;
+  }
+}
+
+body {
+  @apply font-sans;
+}
