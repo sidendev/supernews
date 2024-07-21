@@ -54,13 +54,13 @@ const Home = () => {
                 className="object-cover w-full rounded h-44"
               />
               <section className="p-6 space-y-1">
-                <h3 className="text-1xl font-semibold group-hover:underline group-focus:underline group-hover:text-purple-800">
+                <h3 className="text-1xl font-semibold group-hover:underline group-focus:underline group-hover:text-purple-500">
                   {article.title}
                 </h3>
-                <h4 className="text-purple-800"> {article.topic} </h4>
+                <h4 className="text-purple-500"> {article.topic} </h4>
                 <span className="text-gray-400"> Votes: {article.votes} </span><br />
                 <span className="text-gray-400">{new Date(article.created_at).toDateString()}</span>
-                <span className="flex items-center space-x-2 text-purple-800"><LiaCommentsSolid />
+                <span className="flex items-center space-x-2 text-purple-500"><LiaCommentsSolid />
                   <span>{article.comment_count}</span>
                 </span>
               </section>

@@ -7,6 +7,27 @@ export default {
   // eslint-disable-next-line no-undef
   plugins: [require('daisyui')],
   daisyui: {
-    themes: [],
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/theming/themes')['light'],
+          primary: '#581c87', // purple-900
+          secondary: '#a855f7', // purple-500
+        },
+      },
+      {
+        dark: {
+          ...require('daisyui/src/theming/themes')['dark'],
+          primary: '#581c87', // purple-900
+          secondary: '#a855f7', // purple-500
+        },
+      },
+    ],
+    darkTheme: 'dark', // name of one of the included themes for dark mode
+    lightTheme: 'light', // name of one of the included themes for light mode
+    base: true, // applies background color and foreground color for root element by default
+    styled: true, // include daisyUI colors and design decisions for all components
+    utils: true, // adds responsive and modifier utility classes
+    themeRoot: ':root',
   },
 };
