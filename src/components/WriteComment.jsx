@@ -43,7 +43,7 @@ const WriteComment = (props) => {
 
   return (
     <section
-      className="container flex flex-col max-w-2xl px-6 py-2 mx-auto space-y-12 divide-gray-300 bg-gray-100 text-gray-900">
+      className="container flex flex-col max-w-2xl px-6 py-2 mx-auto space-y-12 divide-gray-300 bg-base-200">
       <div>
         <textarea
           type='text'
@@ -61,12 +61,12 @@ const WriteComment = (props) => {
           Post Comment
         </button>
         {thanksMessage &&
-          <div className="text-purple-900 font-bold">
+          <div className="text-secondary font-bold">
             <span>Thanks for your comment!</span>
           </div>
         }
         {errorMessage &&
-          <div className="text-purple-900 font-bold">
+          <div className="text-secondary font-bold">
             <span>{errorMessage}</span>
           </div>
         }

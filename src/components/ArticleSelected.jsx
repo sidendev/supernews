@@ -35,31 +35,33 @@ const ArticleSelected = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center space-x-2 mt-10">
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
       </div>
     )
   }
 
   return (
     <>
-      <article className="max-w-2xl px-6 pt-24 mx-auto space-y-12 bg-gray-100 text-gray-900">
+      <article className="max-w-2xl px-6 pt-24 mx-auto space-y-12 bg-base-200">
         <section className="w-full mx-auto space-y-4 text-center">
-          <span className="text-xs font-semibold tracking-wider uppercase">{article.topic}</span>
+          <span className="text-sm font-semibold text-secondary tracking-wider uppercase">{article.topic}</span>
           <h1 className="text-4xl font-bold leading-tight md:text-5xl">{article.title}</h1>
-          <img
-            src={article.article_img_url}
-            alt={`article image related to ${article.topic}`} />
-          <p className="text-sm text-gray-600">by{" "}
-            <Link className="underline text-purple-900">
+          <div className="flex justify-center">
+            <img
+              src={article.article_img_url}
+              alt={`article image related to ${article.topic}`} className="max-w-full h-auto rounded-2xl" />
+          </div>
+          <p className="text-sm">by{" "}
+            <Link className="underline text-secondary">
               <span itemProp="name">{article.author}</span>
             </Link> on{" "}
             <span>{new Date(article.created_at).toDateString()}</span>
           </p>
           <ArticleVotes />
         </section>
-        <main className="text-gray-800">
+        <main>
           <p>{article.body}</p>
         </main>
         <aside className="pt-4 border-t border-gray-300">

@@ -28,9 +28,9 @@ const TopicSelected = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center space-x-2 mt-10">
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
       </div>
     )
   }
@@ -38,27 +38,27 @@ const TopicSelected = () => {
   return (
     <>
       <div className="flex items-center justify-center my-6">
-        <h2 className="font-bold text-secondary">{topic.toUpperCase()}</h2>
+        <h2 className="font-bold text-secondary text-lg">{topic.toUpperCase()}</h2>
       </div>
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 my-4 mx-2">
         {articlesByTopic.map((article) => (
           <Link key={article.article_id} to={`/article/${article.article_id}`} >
             <li
-              className="bg-gray-700 text-gray-100 h-96 
-            rounded-lg group hover:no-underline focus:no-underline">
+              className="bg-base-300 h-96 
+            rounded-2xl group hover:no-underline focus:no-underline">
               <img
                 src={article.article_img_url}
                 role="presentation"
-                className="object-cover w-full rounded h-44"
+                className="object-cover w-full rounded-2xl h-44"
               />
               <section className="p-6 space-y-1">
                 <h3 className="text-1xl font-semibold group-hover:underline group-focus:underline group-hover:text-purple-500">
                   {article.title}
                 </h3>
-                <h4 className="text-purple-500"> {article.topic} </h4>
-                <span className="text-gray-400"> Votes: {article.votes} </span><br />
-                <span className="text-gray-400">{new Date(article.created_at).toDateString()}</span>
-                <span className="flex items-center space-x-2 text-purple-500"><LiaCommentsSolid />
+                <h4 className="text-purple-500 font-semibold"> {article.topic} </h4>
+                <span> Votes: {article.votes} </span><br />
+                <span>{new Date(article.created_at).toDateString()}</span>
+                <span className="flex items-center space-x-2 text-purple-500 font-semibold"><LiaCommentsSolid />
                   <span>{article.comment_count}</span>
                 </span>
               </section>

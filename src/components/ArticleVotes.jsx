@@ -40,24 +40,30 @@ const ArticleVotes = () => {
 
   return (
     <>
-      {isLoading && <div>
-        <div className="flex items-center justify-center space-x-2 mt-10">
-          <div className="w-2 h-2 rounded-full animate-pulse bg-purple-900"></div>
-          <div className="w-2 h-2 rounded-full animate-pulse bg-purple-900"></div>
-          <div className="w-2 h-2 rounded-full animate-pulse bg-purple-900"></div>
-        </div>
-      </div>}
-      {!isLoading && <div>
-        <section className="stats shadow light">
-          <div className="stat">
-            <div className="stat-title text-purple-900">Article Votes:</div>
-            <div className="stat-value text-purple-900">{currentArticleVotes}</div>
+      <div className="flex items-center justify-center space-x-2 mt-10">
+        <div className="flex items-center space-x-4 p-2 bg-base-300 rounded-full">
+          <div className="flex items-center space-x-2 bg-base-300 rounded-full p-2" style={{ minWidth: '100px' }}>
+            {isLoading ? (
+              <span className="loading loading-spinner text-secondary"></span>
+            ) : (
+              <>
+                <span className="text-secondary font-bold">Votes:</span>
+                <span className="text-secondary font-bold">{currentArticleVotes}</span>
+              </>
+            )}
           </div>
-        </section>
-      </div>}
-      <button className="btn" onClick={handleAddArticleVoteClick}><FaThumbsUp /></button>
-      <button className="btn" onClick={handleRemoveArticleVoteClick}><FaThumbsDown /></button>
-      {errorMessage && <div className="error-message text-purple-900 font-bold">{errorMessage}</div>}
+          <button className="btn btn-circle" onClick={handleAddArticleVoteClick}>
+            <FaThumbsUp />
+          </button>
+          <button className="btn btn-circle" onClick={handleRemoveArticleVoteClick}>
+            <FaThumbsDown />
+          </button>
+        </div>
+
+      </div>
+      {errorMessage && (
+        <div className="error-message text-purple-900 font-bold">{errorMessage}</div>
+      )}
     </>
   );
 };

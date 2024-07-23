@@ -28,9 +28,9 @@ const AllComments = (props) => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center space-x-2 mt-10">
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
+        <div className="w-6 h-6 rounded-full animate-pulse bg-purple-900"></div>
       </div>
     )
   }
@@ -60,9 +60,9 @@ const AllComments = (props) => {
   }
 
   return (
-    <ul className="container flex flex-col max-w-2xl px-6 py-12 mx-auto space-y-12 divide-gray-300 bg-gray-100 text-gray-900">
+    <ul className="container flex flex-col max-w-2xl px-6 py-12 mx-auto space-y-12 divide-gray-300 bg-base-200">
       {props.deleteMessage && (
-        <div className="text-purple-900 font-bold">
+        <div className="text-secondary font-bold">
           <span>Comment has been deleted, thank you</span>
         </div>
       )}
@@ -71,12 +71,12 @@ const AllComments = (props) => {
           <section className="flex space-x-4">
             <aside>
               <span className="font-bold">{comment.author}</span><br />
-              <span className="text-xs text-gray-600">{new Date(comment.created_at).toDateString()}</span><br />
-              <span className="text-xs font-bold text-purple-900">Votes: {comment.votes}</span><br />
+              <span className="text-xs">{new Date(comment.created_at).toDateString()}</span><br />
+              <span className="text-xs font-bold text-secondary">Votes: {comment.votes}</span><br />
               {renderDeleteButton(comment)}
             </aside>
           </section>
-          <section className="p-4 space-y-2 text-sm text-gray-600 text-left">
+          <section className="p-4 space-y-2 text-sm text-left">
             <p>{comment.body}</p>
           </section>
         </li>

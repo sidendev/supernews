@@ -24,15 +24,15 @@ const ArticlesNavBar = ({ searchParams, setSearchParams }) => {
                 <summary className="font-bold">
                   Sort
                 </summary>
-                <ul className="p-2 bg-white rounded-t-none">
+                <ul className="p-2 rounded-t-none">
                   <li><button
-                    className="hover:bg-slate-300"
+                    className="hover:bg-slate-300 font-semibold"
                     onClick={() => handleSortChange("created_at")}>Date</button></li>
                   <li><button
-                    className="hover:bg-slate-300"
+                    className="hover:bg-slate-300 font-semibold"
                     onClick={() => handleSortChange("comment_count")}>Comments</button></li>
                   <li><button
-                    className="hover:bg-slate-300"
+                    className="hover:bg-slate-300 font-semibold"
                     onClick={() => handleSortChange("votes")}>Votes</button></li>
                 </ul>
               </details>
@@ -42,9 +42,9 @@ const ArticlesNavBar = ({ searchParams, setSearchParams }) => {
                 <summary className="font-bold">
                   Order
                 </summary>
-                <ul className="p-2 bg-white rounded-t-none">
-                  <li><button className="hover:bg-slate-300" onClick={() => handleOrderChange("asc")}>Ascending</button></li>
-                  <li><button className="hover:bg-slate-300" onClick={() => handleOrderChange("desc")}>Descending</button></li>
+                <ul className="p-2 rounded-t-none">
+                  <li><button className="hover:bg-slate-300 font-semibold" onClick={() => handleOrderChange("asc")}>Ascending</button></li>
+                  <li><button className="hover:bg-slate-300 font-semibold" onClick={() => handleOrderChange("desc")}>Descending</button></li>
                 </ul>
               </details>
             </li>

@@ -30,7 +30,7 @@ const Header = () => {
               </Link>
             </section>
 
-            <section className="hidden md:block">
+            <section className="hidden lg:block">
               <nav>
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
@@ -74,7 +74,7 @@ const Header = () => {
 
                 {/* sun icon */}
                 <svg
-                  className="swap-off h-10 w-10 fill-purple-400"
+                  className="swap-off h-8 w-8 fill-purple-400"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24">
                   <path
@@ -83,7 +83,7 @@ const Header = () => {
 
                 {/* moon icon */}
                 <svg
-                  className="swap-on h-10 w-10 fill-purple-400"
+                  className="swap-on h-8 w-8 fill-purple-400"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24">
                   <path
@@ -91,19 +91,49 @@ const Header = () => {
                 </svg>
               </label>
 
-              <div className="block md:hidden">
-                <button className="rounded bg-gray-100 p-2 text-purple-900 transition hover:text-purple-900">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                </button>
+              <div className="block lg:hidden">
+                <div className="dropdown dropdown-end">
+                  <div tabIndex={0} role="button" className="btn btn-ghost hover:bg-secondary btn-circle">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-8 w-8"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="white"
+                      strokeWidth="2"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="
+                    menu menu-md dropdown-content 
+                    bg-base-100 rounded-box
+                    z-[1] mt-3 w-52 p-2 shadow text-secondary">
+                    <li>
+                      <Link to={'/articles/cooking'} className="font-semibold">Cooking</Link>
+                    </li>
+                    <li>
+                      <Link to={'/articles/funny'} className="font-semibold">Funny</Link>
+                    </li>
+                    <li>
+                      <Link to={'/articles/animals'} className="font-semibold">Animals</Link>
+                    </li>
+                    <li>
+                      <Link to={'/articles/uplifting'} className="font-semibold">Uplifting</Link>
+                    </li>
+                    <li>
+                      <Link to={'/articles/health'} className="font-semibold">Health</Link>
+                    </li>
+                    <li>
+                      <Link to={'/articles/environment'} className="font-semibold">Environment</Link>
+                    </li>
+                    <li>
+                      <Link to={'/articles/heroes'} className="font-semibold">Heroes</Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
             </section>
