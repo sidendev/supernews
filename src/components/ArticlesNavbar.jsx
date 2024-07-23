@@ -1,5 +1,3 @@
-import { useSearchParams } from "react-router-dom";
-
 const ArticlesNavBar = ({ searchParams, setSearchParams }) => {
 
   const handleSortChange = (sort_by) => {
@@ -13,7 +11,7 @@ const ArticlesNavBar = ({ searchParams, setSearchParams }) => {
   return (
     <div className="navbar bg-base-300 px-3">
       <div className="flex-1 ps-6">
-        <span className="text-purple-900 text-xl">All Articles</span>
+        <span className="text-purple-900 text-xl font-semibold">All Articles</span>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
