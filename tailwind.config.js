@@ -17,6 +17,7 @@ export default {
           ...require('daisyui/src/theming/themes')['light'],
           primary: '#581c87', // purple-900
           secondary: '#a855f7', // purple-500
+          accent: '#4ade80', // green-400
         },
       },
       {
@@ -24,6 +25,7 @@ export default {
           ...require('daisyui/src/theming/themes')['dark'],
           primary: '#581c87', // purple-900
           secondary: '#a855f7', // purple-500
+          accent: '#4ade80', // green-400
         },
       },
     ],

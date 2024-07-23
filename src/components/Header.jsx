@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <>
       <header className="bg-purple-900">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <section className="md:flex md:items-center md:gap-12">
               <Link to={'/'} className="block text-white">
@@ -34,13 +34,25 @@ const Header = () => {
               <nav>
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
-                    <Link to={'/articles/coding'} className="font-semibold text-white transition hover:underline"> Coding </Link>
-                  </li>
-                  <li>
-                    <Link to={'/articles/football'} className="font-semibold text-white transition hover:underline"> Football </Link>
-                  </li>
-                  <li>
                     <Link to={'/articles/cooking'} className="font-semibold text-white transition hover:underline"> Cooking </Link>
+                  </li>
+                  <li>
+                    <Link to={'/articles/funny'} className="font-semibold text-white transition hover:underline"> Funny </Link>
+                  </li>
+                  <li>
+                    <Link to={'/articles/animals'} className="font-semibold text-white transition hover:underline"> Animals </Link>
+                  </li>
+                  <li>
+                    <Link to={'/articles/uplifting'} className="font-semibold text-white transition hover:underline"> Uplifting </Link>
+                  </li>
+                  <li>
+                    <Link to={'/articles/health'} className="font-semibold text-white transition hover:underline"> Health </Link>
+                  </li>
+                  <li>
+                    <Link to={'/articles/environment'} className="font-semibold text-white transition hover:underline"> Environment </Link>
+                  </li>
+                  <li>
+                    <Link to={'/articles/heroes'} className="font-semibold text-white transition hover:underline"> Heroes </Link>
                   </li>
                 </ul>
               </nav>
