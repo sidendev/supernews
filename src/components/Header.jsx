@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { themeChange } from 'theme-change';
 
@@ -12,12 +12,32 @@ const Header = () => {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
   useEffect(() => {
     themeChange(false); // Initialize theme-change package
     const currentTheme = isDark ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', currentTheme);
     localStorage.setItem('theme', currentTheme);
   }, [isDark]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
 
   return (
     <>
@@ -91,57 +111,99 @@ const Header = () => {
                 </svg>
               </label>
 
-              <div className="block lg:hidden">
-                <div className="dropdown dropdown-end">
-                  <div tabIndex={0} role="button" className="btn btn-ghost hover:bg-secondary btn-circle">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="white"
-                      strokeWidth="2"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                  </div>
-                  <ul
-                    tabIndex={0}
-                    className="
-                    menu menu-md dropdown-content 
-                    bg-base-100 rounded-box
-                    z-[1] mt-3 w-52 p-2 shadow text-secondary">
+              <div className="block lg:hidden dropdown dropdown-end" ref={dropdownRef}>
+                <button className="rounded bg-primary p-2 text-white transition hover:bg-purple-800" onClick={toggleDropdown}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                    strokeWidth="2"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+                {isDropdownOpen && (
+                  <ul tabIndex={0} className="menu menu-md dropdown-content bg-base-100 rounded-box z-[50] mt-3 w-42 p-2 shadow text-secondary">
                     <li>
-                      <Link to={'/articles/cooking'} className="font-semibold">Cooking</Link>
+                      <Link to={'/articles/cooking'} onClick={toggleDropdown} className="font-semibold">Cooking</Link>
                     </li>
                     <li>
-                      <Link to={'/articles/funny'} className="font-semibold">Funny</Link>
+                      <Link to={'/articles/funny'} onClick={toggleDropdown} className="font-semibold">Funny</Link>
                     </li>
                     <li>
-                      <Link to={'/articles/animals'} className="font-semibold">Animals</Link>
+                      <Link to={'/articles/animals'} onClick={toggleDropdown} className="font-semibold">Animals</Link>
                     </li>
                     <li>
-                      <Link to={'/articles/uplifting'} className="font-semibold">Uplifting</Link>
+                      <Link to={'/articles/uplifting'} onClick={toggleDropdown} className="font-semibold">Uplifting</Link>
                     </li>
                     <li>
-                      <Link to={'/articles/health'} className="font-semibold">Health</Link>
+                      <Link to={'/articles/health'} onClick={toggleDropdown} className="font-semibold">Health</Link>
                     </li>
                     <li>
-                      <Link to={'/articles/environment'} className="font-semibold">Environment</Link>
+                      <Link to={'/articles/environment'} onClick={toggleDropdown} className="font-semibold">Environment</Link>
                     </li>
                     <li>
-                      <Link to={'/articles/heroes'} className="font-semibold">Heroes</Link>
+                      <Link to={'/articles/heroes'} onClick={toggleDropdown} className="font-semibold">Heroes</Link>
                     </li>
                   </ul>
-                </div>
+                )}
               </div>
 
             </section>
           </div>
-        </div>
-      </header>
+        </div >
+      </header >
     </>
   );
 };
 
 export default Header;
+
+
+
+{/* <div className="block lg:hidden">
+  <div className="dropdown dropdown-end">
+    <div tabIndex={0} role="button" className="btn btn-ghost hover:bg-secondary btn-circle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-8 w-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="white"
+        strokeWidth="2"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </div>
+    <ul
+      tabIndex={0}
+      className="
+                    menu menu-md dropdown-content 
+                    bg-base-100 rounded-box
+                    z-[1] mt-3 w-52 p-2 shadow text-secondary">
+      <li>
+        <Link to={'/articles/cooking'} className="font-semibold">Cooking</Link>
+      </li>
+      <li>
+        <Link to={'/articles/funny'} className="font-semibold">Funny</Link>
+      </li>
+      <li>
+        <Link to={'/articles/animals'} className="font-semibold">Animals</Link>
+      </li>
+      <li>
+        <Link to={'/articles/uplifting'} className="font-semibold">Uplifting</Link>
+      </li>
+      <li>
+        <Link to={'/articles/health'} className="font-semibold">Health</Link>
+      </li>
+      <li>
+        <Link to={'/articles/environment'} className="font-semibold">Environment</Link>
+      </li>
+      <li>
+        <Link to={'/articles/heroes'} className="font-semibold">Heroes</Link>
+      </li>
+    </ul>
+  </div>
+</div> */}

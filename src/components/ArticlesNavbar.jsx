@@ -20,11 +20,11 @@ const ArticlesNavBar = ({ searchParams, setSearchParams }) => {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <li className="text-secondary px-6">
-              <details>
+              <details className="dropdown">
                 <summary className="font-bold">
                   Sort
                 </summary>
-                <ul className="p-2 rounded-t-none">
+                <ul className="p-2 rounded-t-none bg-base-100 mt-2 -left-10 absolute">
                   <li><button
                     className="hover:bg-slate-300 font-semibold"
                     onClick={() => handleSortChange("created_at")}>Date</button></li>
@@ -38,11 +38,11 @@ const ArticlesNavBar = ({ searchParams, setSearchParams }) => {
               </details>
             </li>
             <li className="text-secondary px-6">
-              <details>
+              <details className="dropdown">
                 <summary className="font-bold">
                   Order
                 </summary>
-                <ul className="p-2 rounded-t-none">
+                <ul className="p-2 rounded-t-none bg-base-100 mt-2 -left-10 absolute">
                   <li><button className="hover:bg-slate-300 font-semibold" onClick={() => handleOrderChange("asc")}>Ascending</button></li>
                   <li><button className="hover:bg-slate-300 font-semibold" onClick={() => handleOrderChange("desc")}>Descending</button></li>
                 </ul>

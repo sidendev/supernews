@@ -52,9 +52,9 @@ const TopicSelected = () => {
                 className="object-cover w-full rounded-2xl h-44"
               />
               <section className="p-6 space-y-1">
-                <h3 className="text-1xl font-semibold group-hover:underline group-focus:underline group-hover:text-purple-500">
+                <h2 className="text-xl font-semibold group-hover:underline group-focus:underline group-hover:text-purple-500">
                   {article.title}
-                </h3>
+                </h2>
                 <h4 className="text-purple-500 font-semibold"> {article.topic} </h4>
                 <span> Votes: {article.votes} </span><br />
                 <span>{new Date(article.created_at).toDateString()}</span>
