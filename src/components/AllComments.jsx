@@ -60,7 +60,7 @@ const AllComments = (props) => {
   }
 
   return (
-    <ul className="container flex flex-col max-w-2xl px-6 py-12 mx-auto space-y-12 divide-gray-300 bg-base-200">
+    <ul className="container flex flex-col max-w-2xl px-6 py-12 mx-auto space-y-12 mb-3 divide-gray-300 bg-base-200">
       {props.deleteMessage && (
         <div className="text-secondary font-bold">
           <span>Comment has been deleted, thank you</span>

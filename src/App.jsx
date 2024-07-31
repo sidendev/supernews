@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import ArticleSelected from './components/ArticleSelected';
 import TopicSelected from './components/TopicSelected';
 import ErrorScreen from './error-components/ErrorScreen';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/error/:status" element={<ErrorScreen />} />
         <Route path="*" element={<ErrorScreen status="general" />} />
       </Routes>
+      <Footer isDark={isDark} setIsDark={setIsDark} />
     </>
   )
 }
