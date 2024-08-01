@@ -27,17 +27,21 @@ function App() {
 
   return (
     <>
-      <Header isDark={isDark} setIsDark={setIsDark} />
-      <div className={isDark ? 'dark' : 'light'}></div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/articles/:topic" element={<TopicSelected />} />
-        <Route path="/article/:article_id" element={<ArticleSelected />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/error/:status" element={<ErrorScreen />} />
-        <Route path="*" element={<ErrorScreen status="general" />} />
-      </Routes>
-      <Footer isDark={isDark} setIsDark={setIsDark} />
+      <div className="flex flex-col min-h-screen">
+        <Header isDark={isDark} setIsDark={setIsDark} />
+        <div className={isDark ? 'dark' : 'light'}></div>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/articles/:topic" element={<TopicSelected />} />
+            <Route path="/article/:article_id" element={<ArticleSelected />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/error/:status" element={<ErrorScreen />} />
+            <Route path="*" element={<ErrorScreen status="general" />} />
+          </Routes>
+        </main>
+        <Footer isDark={isDark} setIsDark={setIsDark} />
+      </div>
     </>
   )
 }
