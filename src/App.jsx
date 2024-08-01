@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import ArticleSelected from './components/ArticleSelected';
 import TopicSelected from './components/TopicSelected';
 import About from './components/About';
+import Writers from './components/Writers';
 import ErrorScreen from './error-components/ErrorScreen';
 import { themeChange } from 'theme-change';
 
@@ -36,6 +37,7 @@ function App() {
             <Route path="/articles/:topic" element={<TopicSelected />} />
             <Route path="/article/:article_id" element={<ArticleSelected />} />
             <Route path="/about" element={<About />} />
+            <Route path="/writers" element={<Writers />} />
             <Route path="/error/:status" element={<ErrorScreen />} />
             <Route path="*" element={<ErrorScreen status="general" />} />
           </Routes>

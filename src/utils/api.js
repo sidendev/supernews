@@ -15,6 +15,17 @@ export const getArticleById = (article_id) => {
     });
 };
 
+export const getUsers = () => {
+  return newsApi
+    .get('/users')
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
 export const getArticles = (sortByInput, orderByInput) => {
   return newsApi
     .get('/articles/', {
