@@ -7,6 +7,7 @@ import ArticleSelected from './components/ArticleSelected';
 import TopicSelected from './components/TopicSelected';
 import About from './components/About';
 import Writers from './components/Writers';
+import Join from './components/Join';
 import ErrorScreen from './error-components/ErrorScreen';
 import { themeChange } from 'theme-change';
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/article/:article_id" element={<ArticleSelected />} />
             <Route path="/about" element={<About />} />
             <Route path="/writers" element={<Writers />} />
+            <Route path="/join" element={<Join />} />
             <Route path="/error/:status" element={<ErrorScreen />} />
             <Route path="*" element={<ErrorScreen status="general" />} />
           </Routes>

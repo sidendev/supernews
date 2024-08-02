@@ -54,7 +54,7 @@ const ArticleSelected = () => {
               alt={`article image related to ${article.topic}`} className="max-w-full h-auto rounded-2xl" />
           </div>
           <p className="text-sm">by{" "}
-            <Link className="underline text-secondary">
+            <Link to="/writers" className="link link-hover text-secondary">
               <span itemProp="name">{article.author}</span>
             </Link> on{" "}
             <span>{new Date(article.created_at).toDateString()}</span>
