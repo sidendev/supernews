@@ -80,7 +80,7 @@ const Header = () => {
 
             <section className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <button className="btn btn-secondary rounded-full bg-purple-900 text-white font-semibold">Login</button>
+                <Link to={'/login'} className="btn btn-secondary rounded-full bg-purple-900 text-white font-semibold">Login</Link>
               </div>
 
               <label className="swap swap-rotate">

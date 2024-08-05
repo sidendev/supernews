@@ -8,6 +8,8 @@ import TopicSelected from './components/TopicSelected';
 import About from './components/About';
 import Writers from './components/Writers';
 import Join from './components/Join';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 import ErrorScreen from './error-components/ErrorScreen';
 import { themeChange } from 'theme-change';
 
@@ -40,6 +42,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/writers" element={<Writers />} />
             <Route path="/join" element={<Join />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/error/:status" element={<ErrorScreen />} />
             <Route path="*" element={<ErrorScreen status="general" />} />
           </Routes>
