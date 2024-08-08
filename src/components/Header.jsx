@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { themeChange } from 'theme-change';
+import { useAuth } from '../context/AuthContext';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
+  const { user } = useAuth();
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
@@ -54,25 +57,25 @@ const Header = () => {
               <nav>
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
-                    <Link to={'/articles/cooking'} className="font-semibold text-white transition hover:underline"> Cooking </Link>
+                    <Link to={'/articles/cooking'} className="font-semibold text-white transition hover:underline">Cooking</Link>
                   </li>
                   <li>
-                    <Link to={'/articles/funny'} className="font-semibold text-white transition hover:underline"> Funny </Link>
+                    <Link to={'/articles/funny'} className="font-semibold text-white transition hover:underline">Funny</Link>
                   </li>
                   <li>
-                    <Link to={'/articles/animals'} className="font-semibold text-white transition hover:underline"> Animals </Link>
+                    <Link to={'/articles/animals'} className="font-semibold text-white transition hover:underline">Animals</Link>
                   </li>
                   <li>
-                    <Link to={'/articles/uplifting'} className="font-semibold text-white transition hover:underline"> Uplifting </Link>
+                    <Link to={'/articles/uplifting'} className="font-semibold text-white transition hover:underline">Uplifting</Link>
                   </li>
                   <li>
-                    <Link to={'/articles/health'} className="font-semibold text-white transition hover:underline"> Health </Link>
+                    <Link to={'/articles/health'} className="font-semibold text-white transition hover:underline">Health</Link>
                   </li>
                   <li>
-                    <Link to={'/articles/environment'} className="font-semibold text-white transition hover:underline"> Environment </Link>
+                    <Link to={'/articles/environment'} className="font-semibold text-white transition hover:underline">Environment</Link>
                   </li>
                   <li>
-                    <Link to={'/articles/heroes'} className="font-semibold text-white transition hover:underline"> Heroes </Link>
+                    <Link to={'/articles/heroes'} className="font-semibold text-white transition hover:underline">Heroes</Link>
                   </li>
                 </ul>
               </nav>
@@ -80,7 +83,14 @@ const Header = () => {
 
             <section className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <Link to={'/login'} className="btn btn-secondary rounded-full bg-purple-900 text-white font-semibold">Login</Link>
+                {user ? (
+                  <Link to="/profile" className="flex items-center gap-2">
+                    <FaUserCircle className="text-white text-2xl" />
+                    <span className="text-white">{user.username}</span>
+                  </Link>
+                ) : (
+                  <Link to="/login" className="btn btn-secondary rounded-full bg-purple-900 text-white font-semibold">Login</Link>
+                )}
               </div>
 
               <label className="swap swap-rotate">

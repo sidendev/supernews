@@ -10,6 +10,7 @@ import Writers from './components/Writers';
 import Join from './components/Join';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Profile from './components/Profile';
 import ErrorScreen from './error-components/ErrorScreen';
 import { themeChange } from 'theme-change';
 
@@ -44,6 +45,7 @@ function App() {
             <Route path="/join" element={<Join />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/error/:status" element={<ErrorScreen />} />
             <Route path="*" element={<ErrorScreen status="general" />} />
           </Routes>
