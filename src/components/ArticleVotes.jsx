@@ -3,12 +3,17 @@ import { useParams } from "react-router-dom";
 import { getArticleById, addArticleVote, removeArticleVote } from "../utils/api";
 import { FaThumbsUp } from "react-icons/fa";
 import { FaThumbsDown } from "react-icons/fa";
+import { useAuth } from '../context/AuthContext';
+
 
 const ArticleVotes = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentArticleVotes, setCurrentArticleVotes] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
+  const [hasVoted, setHasVoted] = useState(false);
   const { article_id } = useParams();
+  const { user } = useAuth();
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,15 +32,33 @@ const ArticleVotes = () => {
   }, [article_id, currentArticleVotes]);
 
   const handleAddArticleVoteClick = (event) => {
-    event.preventDefault()
-    setCurrentArticleVotes((currentArticleVotes) => currentArticleVotes + 1)
-    addArticleVote(article_id)
+    event.preventDefault();
+    if (!user) {
+      setErrorMessage("Please log in first to vote");
+      return;
+    }
+    if (hasVoted) {
+      setErrorMessage("You can only vote once");
+      return;
+    }
+    setCurrentArticleVotes((currentArticleVotes) => currentArticleVotes + 1);
+    addArticleVote(article_id);
+    setHasVoted(true);
   };
 
   const handleRemoveArticleVoteClick = (event) => {
-    event.preventDefault()
-    setCurrentArticleVotes((currentArticleVotes) => currentArticleVotes - 1)
-    removeArticleVote(article_id)
+    event.preventDefault();
+    if (!user) {
+      setErrorMessage("Please log in first to vote");
+      return;
+    }
+    if (hasVoted) {
+      setErrorMessage("You can only vote once");
+      return;
+    }
+    setCurrentArticleVotes((currentArticleVotes) => currentArticleVotes - 1);
+    removeArticleVote(article_id);
+    setHasVoted(true);
   };
 
   return (
@@ -52,17 +75,22 @@ const ArticleVotes = () => {
               </>
             )}
           </div>
-          <button className="btn btn-circle" onClick={handleAddArticleVoteClick}>
+          <button
+            className="btn btn-circle"
+            onClick={handleAddArticleVoteClick}
+          >
             <FaThumbsUp />
           </button>
-          <button className="btn btn-circle" onClick={handleRemoveArticleVoteClick}>
+          <button
+            className="btn btn-circle"
+            onClick={handleRemoveArticleVoteClick}
+          >
             <FaThumbsDown />
           </button>
         </div>
-
       </div>
       {errorMessage && (
-        <div className="error-message text-purple-900 font-bold">{errorMessage}</div>
+        <div className="error-message text-secondary font-bold">{errorMessage}</div>
       )}
     </>
   );
