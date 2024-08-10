@@ -2,7 +2,6 @@ import { useState } from 'react';
 import supabase from '../utils/supabaseClient';
 
 const SignUp = () => {
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -17,7 +16,7 @@ const SignUp = () => {
     }
 
     try {
-      const { user, error } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signUp({
         email,
         password,
       });
@@ -25,20 +24,10 @@ const SignUp = () => {
       if (error) {
         setError(error.message);
       } else {
-        // Insert user profile into 'profiles' table
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .insert([{ id: user.id, username, email }]);
-
-        if (profileError) {
-          setError(profileError.message);
-        } else {
-          setSuccess('Thank you for signing up! Please check your email and spam folder for confirmation.');
-          setUsername('');
-          setEmail('');
-          setPassword('');
-          setConfirmPassword('');
-        }
+        setSuccess('Thank you for signing up! Please check your email and spam folder for confirmation.');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
       }
     } catch (error) {
       setError('An unexpected error occurred');
@@ -56,18 +45,6 @@ const SignUp = () => {
           <form onSubmit={handleSignUp}>
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text">Username</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Your username"
-                className="input input-bordered w-full max-w-xs rounded-xl"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
@@ -76,6 +53,7 @@ const SignUp = () => {
                 className="input input-bordered w-full max-w-xs rounded-xl"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="form-control w-full max-w-xs">
@@ -88,6 +66,7 @@ const SignUp = () => {
                 className="input input-bordered w-full max-w-xs rounded-xl"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div className="form-control w-full max-w-xs">
@@ -100,6 +79,7 @@ const SignUp = () => {
                 className="input input-bordered w-full max-w-xs rounded-xl"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required
               />
             </div>
             <button
