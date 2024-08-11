@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { themeChange } from 'theme-change';
 import { useAuth } from '../context/AuthContext';
 import { FaUserCircle } from 'react-icons/fa';
+import supabase from '../utils/supabaseClient';
 
 const Header = () => {
   const { user } = useAuth();
@@ -17,6 +18,7 @@ const Header = () => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [avatarUrl, setAvatarUrl] = useState('');
 
   useEffect(() => {
     themeChange(false); // Initialize theme-change package
@@ -37,6 +39,28 @@ const Header = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef]);
+
+  useEffect(() => {
+    if (user) {
+      fetchAvatar();
+    } else {
+      setAvatarUrl('');
+    }
+  }, [user]);
+
+  const fetchAvatar = async () => {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('avatar_url')
+      .eq('id', user.id)
+      .single();
+
+    if (error) {
+      console.error('Error fetching avatar:', error);
+    } else if (data) {
+      setAvatarUrl(data.avatar_url || '');
+    }
+  };
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
@@ -85,8 +109,11 @@ const Header = () => {
               <div className="sm:flex sm:gap-4">
                 {user ? (
                   <Link to="/profile" className="flex items-center gap-2">
-                    <FaUserCircle className="text-white text-2xl" />
-                    <span className="text-white">{user.username}</span>
+                    {avatarUrl ? (
+                      <img src={avatarUrl} alt="User Avatar" className="w-8 h-8 rounded-full" />
+                    ) : (
+                      <FaUserCircle className="text-white text-2xl" />
+                    )}
                   </Link>
                 ) : (
                   <Link to="/login" className="btn btn-secondary rounded-full bg-purple-900 text-white font-semibold">Login</Link>
