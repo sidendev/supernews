@@ -4,6 +4,8 @@ import { getArticleById } from "../utils/api";
 import AllComments from "./AllComments";
 import ArticleVotes from "./ArticleVotes";
 import WriteComment from "./WriteComment";
+import supabase from '../utils/supabaseClient';
+import { useAuth } from '../context/AuthContext';
 
 const ArticleSelected = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,9 +14,8 @@ const ArticleSelected = () => {
   const [commentsUpdated, setCommentsUpdated] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState(false);
   const navigate = useNavigate();
-  // commentAuthor hardcoded during project build
-  // eslint-disable-next-line no-unused-vars
-  const [commentAuthor, setCommentAuthor] = useState('grumpy19');
+  const { user } = useAuth();
+  const [commentAuthor, setCommentAuthor] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,6 +32,32 @@ const ArticleSelected = () => {
         navigate(`/error/${error.response?.status || 'general'}`);
       });
   }, [navigate]);
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      if (user) {
+        try {
+          const { data, error } = await supabase
+            .from('profiles')
+            .select('username')
+            .eq('id', user.id)
+            .single();
+
+          if (error) {
+            console.error('Error fetching username:', error);
+          } else {
+            setCommentAuthor(data.username);
+          }
+        } catch (error) {
+          console.error('Unexpected error:', error);
+        }
+      } else {
+        setCommentAuthor(null);
+      }
+    };
+
+    fetchUsername();
+  }, [user]);
 
   if (isLoading) {
     return (

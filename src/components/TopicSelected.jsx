@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getArticlesByTopic } from "../utils/api";
-import { LiaCommentsSolid } from "react-icons/lia";
+import { FaThumbsUp } from "react-icons/fa";
+import { IoIosChatboxes } from "react-icons/io";
 
 const TopicSelected = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,11 +57,17 @@ const TopicSelected = () => {
                   {article.title}
                 </h2>
                 <h4 className="text-purple-500 font-semibold"> {article.topic} </h4>
-                <span> Votes: {article.votes} </span><br />
-                <span>{new Date(article.created_at).toDateString()}</span>
-                <span className="flex items-center space-x-2 text-purple-500 font-semibold"><LiaCommentsSolid />
-                  <span>{article.comment_count}</span>
-                </span>
+                <span className="text-sm">{new Date(article.created_at).toDateString()}</span>
+                <div className="flex items-center space-x-4">
+                  <span className="flex items-center space-x-1 font-semibold">
+                    <FaThumbsUp className="text-purple-500 text-sm" />
+                    <span className="text-sm">{article.votes}</span>
+                  </span>
+                  <span className="flex items-center space-x-1 px-1 font-semibold">
+                    <IoIosChatboxes className="text-purple-500" />
+                    <span className="text-sm">{article.comment_count}</span>
+                  </span>
+                </div>
               </section>
             </li>
           </Link>
