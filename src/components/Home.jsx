@@ -43,7 +43,7 @@ const Home = () => {
   return (
     <>
       <ArticlesNavBar searchParams={searchParams} setSearchParams={setSearchParams} />
-      <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 my-4 mx-2">
+      <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 my-4 mx-4">
         {articles.map((article) => (
           <Link key={article.article_id} to={`/article/${article.article_id}`} >
             <li
