@@ -48,6 +48,10 @@ Supernews is a concept web application that focuses on delivering only positive 
 
 5. Open your browser and navigate to `http://localhost:5173`
 
+## Usage
+
+## Acknowledgments
+
 ## License
 
 This project is licensed under the MIT License.
