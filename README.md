@@ -17,6 +17,7 @@ Supernews is a concept web application that focuses on delivering only positive 
 - Tailwind CSS
 - DaisyUI
 - Supabase
+- React Icons
 
 ## Getting Started
 
@@ -50,7 +51,29 @@ Supernews is a concept web application that focuses on delivering only positive 
 
 ## Usage
 
+1. Sign up or log in to your account
+2. Explore the news stories and vote on your favorites
+3. Leave comments on stories to engage with the community
+4. Create your own profile to participate fully in the community
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to Supernews, please follow these steps:
+
+1. Fork the repository
+2. Create a new branch for your feature or bug fix
+3. Make your changes and commit them with descriptive messages
+4. Push your changes to your forked repository
+5. Submit a pull request to the main repository
+
+## Status
+
+This project is currently still in development and is not yet fully functional.
+
 ## Acknowledgments
+
+- Thanks to the React, Vite, Tailwind CSS, DaisyUI, and Supabase communities for their amazing tools and resources.
+- Special thanks to the Northcoders community for their support and guidance.
 
 ## License
 
