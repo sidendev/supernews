@@ -57,7 +57,7 @@ This repo is for the react/vite frontend of the application. There is also a bac
 
 ## Usage
 
-1. Sign up or log in to your account (Note sign ups are disabled to general public during development)
+1. Sign up or log in to your account (Note sign ups are disabled during development)
 2. Explore the news stories and vote on your favorites
 3. Leave comments on stories to engage with the community
 4. Create your own profile to participate fully in the community
