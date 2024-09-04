@@ -1,6 +1,7 @@
 # Supernews
 
 Supernews is a concept web application that focuses on delivering only positive news stories. It's a platform where users can share, read, and interact with uplifting content, creating a community-driven space for good news.
+Please be aware that this is currently hosted on a free tier of Netlify and may experience slow loading times of up to 60 seconds.
 This repo is for the react/vite frontend of the application. There is also a backend repo for the express/postgresql backend for this project and can be found here: https://github.com/sidendev/nc-news
 
 ![Supernews web app Mockup](./public/supernews-mockup-cropped.webp)
@@ -22,6 +23,7 @@ This repo is for the react/vite frontend of the application. There is also a bac
 - Supabase
 - React Icons
 - Axios
+- Netlify
 
 ## Getting Started
 

@@ -15,24 +15,26 @@ const SignUp = () => {
       return;
     }
 
-    try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
+    // SIGN UP SECTION PAUSED WHILE IN DEVELOPMENT
 
-      if (error) {
-        setError(error.message);
-      } else {
-        setSuccess('Thank you for signing up! Please check your email and spam folder for confirmation.');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
-      }
-    } catch (error) {
-      setError('An unexpected error occurred');
-      console.error('SignUp error:', error.message);
-    }
+    // try {
+    //   const { error } = await supabase.auth.signUp({
+    //     email,
+    //     password,
+    //   });
+
+    //   if (error) {
+    //     setError(error.message);
+    //   } else {
+    //     setSuccess('Thank you for signing up! Please check your email and spam folder for confirmation.');
+    //     setEmail('');
+    //     setPassword('');
+    //     setConfirmPassword('');
+    //   }
+    // } catch (error) {
+    //   setError('An unexpected error occurred');
+    //   console.error('SignUp error:', error.message);
+    // }
   };
 
   return (

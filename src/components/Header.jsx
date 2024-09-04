@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { themeChange } from 'theme-change';
 import { useAuth } from '../context/AuthContext';
@@ -17,7 +17,6 @@ const Header = () => {
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
   const [avatarUrl, setAvatarUrl] = useState('');
 
   useEffect(() => {
@@ -26,19 +25,6 @@ const Header = () => {
     document.documentElement.setAttribute('data-theme', currentTheme);
     localStorage.setItem('theme', currentTheme);
   }, [isDark]);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
 
   useEffect(() => {
     if (user) {
@@ -77,6 +63,7 @@ const Header = () => {
               </Link>
             </section>
 
+            {/* Desktop Navigation */}
             <section className="hidden lg:block">
               <nav>
                 <ul className="flex items-center gap-6 text-sm">
@@ -105,6 +92,7 @@ const Header = () => {
               </nav>
             </section>
 
+            {/* User Profile and Dark Mode Toggle */}
             <section className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
                 {user ? (
@@ -120,6 +108,7 @@ const Header = () => {
                 )}
               </div>
 
+              {/* Dark Mode Toggle */}
               <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
                 <input
@@ -148,8 +137,9 @@ const Header = () => {
                 </svg>
               </label>
 
-              <div className="block lg:hidden dropdown dropdown-end" ref={dropdownRef}>
-                <button className="rounded bg-primary p-2 text-white transition hover:bg-purple-800" onClick={toggleDropdown}>
+              {/* Burger icon section for mobile */}
+              <div className="block lg:hidden relative">
+                <button className="rounded bg-primary p-2 text-white transition hover:bg-purple-800 cursor-pointer" onClick={toggleDropdown}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-8 w-8"
@@ -162,7 +152,7 @@ const Header = () => {
                   </svg>
                 </button>
                 {isDropdownOpen && (
-                  <ul tabIndex={0} className="menu menu-md dropdown-content bg-base-100 rounded-box z-[50] mt-3 w-42 p-2 shadow text-secondary">
+                  <ul tabIndex={0} className="right-0 menu menu-md absolute bg-base-100 rounded-lg z-[50] mt-2 w-42 p-2 shadow text-secondary">
                     <li>
                       <Link to={'/articles/cooking'} onClick={toggleDropdown} className="font-semibold">Cooking</Link>
                     </li>
