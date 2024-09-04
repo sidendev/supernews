@@ -1,6 +1,9 @@
 # Supernews
 
 Supernews is a concept web application that focuses on delivering only positive news stories. It's a platform where users can share, read, and interact with uplifting content, creating a community-driven space for good news.
+This repo is for the react/vite frontend of the application. There is also a backend repo for the express/postgresql backend for this project and can be found here: https://github.com/sidendev/nc-news
+
+![Supernews web app Mockup](./public/supernews-mockup-cropped.webp)
 
 ## Features
 
@@ -18,20 +21,21 @@ Supernews is a concept web application that focuses on delivering only positive 
 - DaisyUI
 - Supabase
 - React Icons
+- Axios
 
 ## Getting Started
 
 1. Clone the repository:
    Go to the Supernews GitHub repository page
-   https://github.com/your-username/supernews
+   https://github.com/sidendev/supernews
    Click on the green "Code" button near the top-right of the page
    In the dropdown, copy the HTTPS URL it should look like
-   https://github.com/your-username/supernews.git
+   https://github.com/sidendev/supernews.git
    Open your terminal or command prompt
    Navigate to the directory where you want to clone the project
    Run the following command, replacing the URL with the one you copied:
    git clone
-   https://github.com/your-username/supernews.git
+   https://github.com/sidendev/supernews.git
 
    Once the cloning is complete, navigate into the project directory:
    cd supernews
@@ -47,24 +51,18 @@ Supernews is a concept web application that focuses on delivering only positive 
 4. Start the development server:
    npm run dev
 
-5. Open your browser and navigate to `http://localhost:5173`
+5. Open your browser and navigate to `http://localhost:5173` or other localhost address if specified in the terminal to access the application.
 
 ## Usage
 
-1. Sign up or log in to your account
+1. Sign up or log in to your account (Note sign ups are disabled to general public during development)
 2. Explore the news stories and vote on your favorites
 3. Leave comments on stories to engage with the community
 4. Create your own profile to participate fully in the community
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to Supernews, please follow these steps:
-
-1. Fork the repository
-2. Create a new branch for your feature or bug fix
-3. Make your changes and commit them with descriptive messages
-4. Push your changes to your forked repository
-5. Submit a pull request to the main repository
+I'm not really looking for contributions at the moment, but if you'd like to fork the repo and make your own changes and expand upon it, that would be awesome!
 
 ## Status
 
@@ -72,8 +70,8 @@ This project is currently still in development and is not yet fully functional.
 
 ## Acknowledgments
 
-- Thanks to the React, Vite, Tailwind CSS, DaisyUI, and Supabase communities for their amazing tools and resources.
-- Special thanks to the Northcoders community for their support and guidance.
+- Thanks to the React, Vite, Tailwind CSS, DaisyUI, and Supabase docs/communities for their amazing tools and resources.
+- Special thanks to the Northcoders community/trainers and my mentor for their support and guidance.
 
 ## License
 
